@@ -17,7 +17,6 @@ The major or the common operations that can be performed on the data structures 
 => Updation: We can also update the element, i.e., we can replace the element with another element.
 
 => Deletion: We can also perform the delete operation to remove the element from the data structure.
-## Screenshots
 
-![App Screenshot](https://github.com/saielnaik/Data-Structure-in-C/blob/main/ds-introduction.png)
+![pic](https://github.com/saielnaik/Data-Structure-in-C/blob/main/ds-introduction.png)
 
