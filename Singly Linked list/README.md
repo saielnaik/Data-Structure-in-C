@@ -8,7 +8,7 @@ One way chain or singly linked list can be traversed only in one direction. In o
 Consider an example where the marks obtained by the student in three subjects are stored in a linked list as shown in the figure.
 
 
-## Screenshots
+
 
 ![Singly Linked List](https://github.com/saielnaik/Data-Structure-in-C/blob/main/Singly%20Linked%20list/singly-link-list.png)
 
