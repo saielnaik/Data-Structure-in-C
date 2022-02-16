@@ -1,49 +1,52 @@
 #include<stdio.h>
+#include<stdlib.h>
 
 void mergeSort(int *, int);
-void merge(int *, int, int *, int);
+void merge(int*, int, int*, int);
 
-int main()
-{
-	int arr[100], i, size;
-
-	printf("Enter the number of elements in the array :");
-	scanf("%d", &size);
-
-	printf("Enter the elements to be sorted: ");
-	for (i = 0;i < size; i++)
-		scanf("%d", &arr[i]);
-
-	mergeSort(arr, size);
+void main(){
+	int *arr, i, n;
 	
-	printf("The sorted elements are: ");
-	for (i = 0;i < size; i++)
-		printf("%d\t", arr[i]);
+	printf("Enter the number of elements in the array :");
+	scanf("%d",&n);
+	
+	arr = (int*) malloc(sizeof(int));
+	
+	printf("Enter the elements to be sorted: ");
+	for(i = 0;i < n; i++)
+		scanf("%d",&arr[i]);
+	
+	mergeSort(arr, n);
+	
+	printf("The sorted elements are : ");	
+	for(i = 0;i < n; i++)
+		printf("%d\t",arr[i]);
+	printf("\n");
 }
 
-void mergeSort(int *arr, int size)
-{
-	int mid;
-	if (size == 1)
-		return;
-	else
-	{
-		mid = size / 2;
-		mergeSort(arr, mid);
-		mergeSort(arr + mid, size - mid);
-		merge(arr, mid, arr + mid, size - mid);
-	}
+void mergeSort(int *array, int size){
+    int mid;
+    if(size == 1)
+        return;
+    else{
+        mid = size/2;
+        mergeSort(array, mid);
+        mergeSort(array + mid, size - mid);
+        merge(array, mid, array + mid, size - mid);
+    }
 }
 
-void merge(int *arr1, int size1, int *arr2, int size2)
-{
-	int temp_arr[100],  p1, p2, pt;
-	p1 = p2 = pt = 0;
-	while (p1 < size1 && p2 < size2)
-		temp_arr[pt++] = (arr1[p1] < arr2[p2]) ? arr1[p1++] : arr2[p2++];
-	while (p1 < size2)
-		temp_arr[pt++] = arr1[p1++];
-
-	for (p1 = 0; p1 < pt; p1++)
-		arr1[p1] = temp_arr[p1];
+void merge(int *a, int s1, int *b, int s2){
+	int i, j, k, *temp_arr;
+	temp_arr = (int*) malloc((s2+s1) * sizeof(int));
+	i = j = k = 0;
+	while(i < s1 && j < s2)
+	    temp_arr[k++] = (a[i] < b[j]) ? a[i++] : b[j++];
+	while(i < s1)
+	    temp_arr[k++] = a[i++];
+    while(j < s2)
+	    temp_arr[k++] = b[j++];
+	for(i = 0; i < k; i++)
+	    a[i] = temp_arr[i];
+    free(temp_arr);
 }
